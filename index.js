@@ -151,7 +151,9 @@ class WebpackAliyunOss {
 				if (err) console.error(err);
 				else {
 					if (!files.length) {
-						fs.rmdir(dirname)
+						fs.rmdir(dirname, (err) => {
+							if (err) console.error(err)
+						})
 						this.config.verbose && console.log('empty directory deleted'.green, dirname)
 					}
 				}
